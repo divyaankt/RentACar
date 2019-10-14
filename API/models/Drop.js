@@ -1,9 +1,9 @@
-const Room = require('./Room')
+const Car = require('./Car')
 const User = require('./User')
 
-Room.deleteMany()
+Car.deleteMany()
   .then(() => {
-    console.log('Deleted rooms')
+    console.log('Deleted cars')
     process.exit()
   })
 

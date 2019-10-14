@@ -13,7 +13,7 @@ const rentalSchema = new Schema({
 })
 
 // Validation to ensure a Car cannot be double-booked
-bookingSchema.path('rentStart').validate(function(value) {
+rentalSchema.path('rentStart').validate(function(value) {
   // Extract the Room Id from the query object
   let carId = this.carId
   
@@ -59,7 +59,7 @@ const carSchema = new Schema({
   car_model: { type: String, index: true, required: true },
   colour: { type: String },
   capacity: Number,
-  isRented : { type: Boolean, default: false }
+  isRented : { type: Boolean, default: false },
   rent: [rentalSchema]
 })
 
