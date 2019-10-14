@@ -23,8 +23,9 @@ app.use((error, req, res, next) => {
   })
 })
 
+const port = process.env.PORT || 3000;
 // Read port and host from the .env file
-app.listen(process.env.PORT, process.env.LOCALHOST , error => {
+app.listen(port, process.env.LOCALHOST , error => {
   if (error) {
     console.error('Error starting', error)
   } else {
