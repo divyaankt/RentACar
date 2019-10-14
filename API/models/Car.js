@@ -12,9 +12,10 @@ const rentalSchema = new Schema({
   carId: { type: Schema.ObjectId, ref: 'Car' }
 })
 
-// Validation to ensure a Car cannot be double-booked
+// Validation to ensure a Car cannot be re-Rented
 rentalSchema.path('rentStart').validate(function(value) {
-  // Extract the Room Id from the query object
+
+  // Extract the Car Id from the query object
   let carId = this.carId
   
   // Convert booking Date objects into a number value
@@ -33,17 +34,18 @@ rentalSchema.path('rentStart').validate(function(value) {
     return false
   }
   
-  // Locate the room document containing the bookings
+  // Locate the Car document containing the rentals
   return Car.findById(carId)
     .then(car => {
-      // Loop through each existing booking and return false if there is a clash
+
+      // Loop through each existing rent and return false if there is a clash
       return car.rent.every(rent => {
         
-        // Convert existing booking Date objects into number values
+        // Convert existing rent Date objects into number values
         let existingRentStart = new Date(rent.rentStart).getTime()
         let existingRentEnd = new Date(rent.rentEnd).getTime()
 
-        // Check whether there is a clash between the new booking and the existing booking
+        // Check whether there is a clash between the new rentals and the existing rentals
         return !clashesWithExisting(
           existingRentStart, 
           existingRentEnd, 

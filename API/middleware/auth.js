@@ -75,7 +75,7 @@ passport.use(
 module.exports = {
   initialize: passport.initialize(),
   signUp,
-  signIn: passport.authenticate('local', { session: true }),
-  requireJWT: passport.authenticate('jwt', { session: true }),
+  signIn: passport.authenticate('local', { session: false }),
+  requireJWT: passport.authenticate('jwt', { session: false }),
   signJWTForUser
 }

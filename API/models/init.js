@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 require('dotenv').config()
 mongoose.Promise = global.Promise
 
+//Establish Database Connection
 mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true})
 	.then(() => {
     	console.log('Successfully Connected to Database')

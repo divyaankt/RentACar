@@ -26,23 +26,26 @@ router.post('/cars', requireJWT, (req, res) => {
     })
 })
 
-// Function to convert UTC JS Date object to a Moment.js object in AEST
-const dateAEST = date => {
+// Function to convert UTC JS Date object to a Moment.js object in Indian Standard Time
+const dateIST = date => {
   return momentTimezone(date).tz('Asia/Kolkata')
 }
 
-// Function to calculate the duration of the hours between the start and end of the booking
+// Calculate the duration of the hours between the start and end of the Rental Period
 const durationHours = (rentStart, rentEnd) => {
+
   // convert the UTC Date objects to Moment.js objeccts
-  let startDateLocal = dateAEST(rentStart)
-  let endDateLocal = dateAEST(rentEnd)
+  let startDateLocal = dateIST(rentStart)
+  let endDateLocal = dateIST(rentEnd)
+
   // calculate the duration of the difference between the two times
   let difference = moment.duration(endDateLocal.diff(startDateLocal))
+
   // return the difference in decimal format
   return difference.hours() + difference.minutes() / 60
 }
 
-// Make a booking
+// Rent a Car
 router.put('/cars/:id', requireJWT, (req, res) => {
   const { id } = req.params
     Car.findByIdAndUpdate(
@@ -51,10 +54,13 @@ router.put('/cars/:id', requireJWT, (req, res) => {
         $addToSet: {
           rent: {
             user: req.user,
+
             // The hour on which the booking starts, calculated from 12:00AM as time = 0
-            startHour: dateAEST(req.body.rentStart).format('H.mm'),
+            startHour: dateIST(req.body.rentStart).format('H.mm'),
+
             // The duration of the booking in decimal format
             duration: durationHours(req.body.rentStart, req.body.rentEnd),
+            
             // Spread operator for remaining attributes
             ...req.body
           }
