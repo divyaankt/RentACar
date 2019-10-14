@@ -1,0 +1,47 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Car Rental API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "engines": {
+    "npm": "6.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/divyaankt/RentACar.git"
+  },
+  "keywords": [
+    "WhitePanda",
+    "Express",
+    "Mongoose",
+    "JWT",
+    "JEST"
+  ],
+  "author": "Divyaank Tiwari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/divyaankt/RentACar/issues"
+  },
+  "homepage": "https://github.com/divyaankt/RentACar#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.26",
+    "mongoose": "^5.7.4",
+    "mongoose-timestamp": "^0.6.0",
+    "nodemon": "^1.19.3",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^5.0.1"
+  }
+}
