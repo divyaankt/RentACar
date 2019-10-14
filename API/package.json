@@ -4,7 +4,8 @@
   "description": "Car Rental API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
     "moment": "^2.24.0",
     "mongoose": "^5.7.4",
     "mongoose-timestamp": "^0.6.0",
+    "nodemon": "^1.19.3",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^2.0.0",
     "passport-jwt": "^4.0.0",
