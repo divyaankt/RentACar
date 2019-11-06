@@ -35,7 +35,7 @@
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.26",
-    "mongoose": "^5.7.4",
+    "mongoose": "^5.7.5",
     "mongoose-timestamp": "^0.6.0",
     "nodemon": "^1.19.3",
     "passport": "^0.4.0",
